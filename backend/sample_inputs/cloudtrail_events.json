@@ -1,0 +1,101 @@
+{
+  "Records": [
+    {
+      "eventID": "a1b2c3d4-0001-kms-rotate",
+      "eventTime": "2026-06-12T08:14:22Z",
+      "eventSource": "kms.amazonaws.com",
+      "eventName": "EnableKeyRotation",
+      "awsRegion": "us-east-1",
+      "userIdentity": {"arn": "arn:aws:iam::111122223333:user/keyadmin"},
+      "requestParameters": {"keyId": "arn:aws:kms:us-east-1:111122223333:key/prod-db-cmk"}
+    },
+    {
+      "eventID": "a1b2c3d4-0002-kms-rotate",
+      "eventTime": "2026-06-11T19:02:10Z",
+      "eventSource": "kms.amazonaws.com",
+      "eventName": "EnableKeyRotation",
+      "awsRegion": "eu-west-1",
+      "requestParameters": {"keyId": "arn:aws:kms:eu-west-1:111122223333:key/backups-cmk"}
+    },
+    {
+      "eventID": "a1b2c3d4-0003-kms-create",
+      "eventTime": "2026-06-09T11:45:00Z",
+      "eventSource": "kms.amazonaws.com",
+      "eventName": "CreateKey",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"keyId": "arn:aws:kms:us-east-1:111122223333:key/new-svc-cmk"}
+    },
+    {
+      "eventID": "a1b2c3d4-0004-s3-enc",
+      "eventTime": "2026-06-12T03:30:55Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "PutBucketEncryption",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"bucketName": "prod-customer-data", "ServerSideEncryptionConfiguration": {"Rule": {"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "aws:kms"}}}}
+    },
+    {
+      "eventID": "a1b2c3d4-0005-s3-enc",
+      "eventTime": "2026-06-10T22:10:31Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "PutBucketEncryption",
+      "awsRegion": "us-west-2",
+      "requestParameters": {"bucketName": "prod-audit-archive", "ServerSideEncryptionConfiguration": {"Rule": {"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}}}
+    },
+    {
+      "eventID": "a1b2c3d4-0006-rds-enc",
+      "eventTime": "2026-06-08T14:05:00Z",
+      "eventSource": "rds.amazonaws.com",
+      "eventName": "ModifyDBInstance",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"dBInstanceIdentifier": "prod-payments-db", "storageEncrypted": true}
+    },
+    {
+      "eventID": "a1b2c3d4-0007-acm-tls",
+      "eventTime": "2026-06-11T06:48:19Z",
+      "eventSource": "acm.amazonaws.com",
+      "eventName": "RenewCertificate",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"certificateArn": "arn:aws:acm:us-east-1:111122223333:certificate/api-gateway-tls"}
+    },
+    {
+      "eventID": "a1b2c3d4-0008-elb-tls",
+      "eventTime": "2026-06-12T15:22:44Z",
+      "eventSource": "elasticloadbalancing.amazonaws.com",
+      "eventName": "ModifyListener",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"listenerArn": "arn:aws:elasticloadbalancing:...:listener/app/prod-alb", "sslPolicy": "ELBSecurityPolicy-TLS13-1-2-2021-06"}
+    },
+    {
+      "eventID": "noise-0009-login",
+      "eventTime": "2026-06-12T09:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "requestParameters": null
+    },
+    {
+      "eventID": "noise-0010-ec2-run",
+      "eventTime": "2026-06-11T13:20:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "RunInstances",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"instanceType": "m5.large"}
+    },
+    {
+      "eventID": "noise-0011-ec2-desc",
+      "eventTime": "2026-06-10T10:00:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "requestParameters": null
+    },
+    {
+      "eventID": "noise-0012-iam-user",
+      "eventTime": "2026-06-09T17:35:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateUser",
+      "awsRegion": "us-east-1",
+      "requestParameters": {"userName": "contractor-temp"}
+    }
+  ]
+}
