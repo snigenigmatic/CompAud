@@ -1,7 +1,6 @@
-"""PS3 LangGraph pipeline. Mirrors the Rakshak analysis_graph backbone (linear
-StateGraph, @lru_cache compiled graph, run/stream, node-names) so the SSE
-service and observability are reused. The LLM is used only in
-generate_narratives; everything else is deterministic.
+"""PS3 LangGraph pipeline. Includes step-by-step nodes, compiled graph,
+run/stream methods. The LLM is used only in generate_narratives; everything
+else is deterministic.
 """
 
 from __future__ import annotations
@@ -18,7 +17,7 @@ from app.agents.ps3_quality import COMPLIANT, GAP, PARTIAL, evaluate_quality
 from app.agents.ps3_report import build_ps3_report, generate_report_text
 from app.collectors import BucketCollector, CloudTrailCollector
 from app.collectors.base import collect_all
-from app.models.analysis import AgentTraceEntry
+from app.models.ps3 import AgentTraceEntry
 from app.models.ps3 import Evidence, PS3ReportResponse, Requirement, RequirementStatusResult
 from app.observability import set_span_attributes, start_span
 from app.services.ps3_requirement_service import load_requirements

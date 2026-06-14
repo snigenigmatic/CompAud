@@ -1,9 +1,10 @@
 from fastapi import Request
 from fastapi.responses import JSONResponse
 
-from app.models.errors import ErrorResponse
+from pydantic import BaseModel
 
-
+class ErrorResponse(BaseModel):
+    error: dict
 class ApiError(Exception):
     def __init__(self, status_code: int, code: str, message: str) -> None:
         self.status_code = status_code

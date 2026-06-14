@@ -20,7 +20,7 @@ class Settings(BaseSettings):
 
     phoenix_enabled: bool = Field(default=True, alias="PHOENIX_ENABLED")
     phoenix_project_name: str = Field(
-        default="rakshak-ai-backend",
+        default="compaud-backend",
         alias="PHOENIX_PROJECT_NAME",
     )
     phoenix_collector_endpoint: str = Field(
@@ -32,10 +32,6 @@ class Settings(BaseSettings):
     openai_api_key: str = Field(default="", alias="OPENAI_API_KEY")
     openai_model: str = Field(default="gpt-5.2", alias="OPENAI_MODEL")
     openai_reasoning_effort: str = Field(default="low", alias="OPENAI_REASONING_EFFORT")
-
-    neo4j_uri: str = Field(default="", alias="NEO4J_URI")
-    neo4j_user: str = Field(default="neo4j", alias="NEO4J_USER")
-    neo4j_password: str = Field(default="", alias="NEO4J_PASSWORD")
 
     # --- PS3: Automated Compliance Evidence Collection & Audit ---
     embedding_model_name: str = Field(

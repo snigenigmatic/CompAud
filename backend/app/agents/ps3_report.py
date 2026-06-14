@@ -23,7 +23,7 @@ from app.models.ps3 import (
     RequirementReport,
     RequirementStatusResult,
 )
-from app.models.analysis import AgentTraceEntry
+from app.models.ps3 import AgentTraceEntry
 
 logger = logging.getLogger(__name__)
 
