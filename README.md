@@ -3,8 +3,7 @@
 Parses policy documents into structured requirements, auto-collects evidence, links it to
 requirements **semantically** (no fake id-join), evaluates each requirement's compliance with
 **freshness-vs-audit-frequency SLAs** and confidence, and produces an **auditor-ready report
-(JSON + PDF)** plus a dashboard. Built on the existing RakshakAI scaffold (FastAPI + LangGraph +
-Next.js); the PS3 pipeline runs in parallel and the original Rakshak demo still works.
+(JSON + PDF)** plus a dashboard. Built on FastAPI, LangGraph, and Next.js.
 
 ## Rubric mapping (100 pts)
 
@@ -37,7 +36,8 @@ Example end-to-end: *"Data-in-transit (TLS) must be **Continuous** (≤1 day fre
 ```
 policy_documents.txt ─► ps3_policy_parser ─► Requirement[] (9)
                                                    │
-CloudTrailCollector ┐                              ▼
+                                                   ▼
+CloudTrailCollector ┐                              
 BucketCollector     ┴► Evidence[] ─► embed ─► link (cosine + framework) ─► quality/freshness ─► report (JSON + PDF)
 ```
 LangGraph pipeline: `load_requirements → collect_evidence → embed → link_evidence → evaluate_quality → generate_narratives → assemble_report` (`app/agents/ps3_graph.py`). LLM (OpenAI, optional) is used **only** for narratives + executive summary, never for status decisions; deterministic fallbacks everywhere.
@@ -48,7 +48,7 @@ LangGraph pipeline: `load_requirements → collect_evidence → embed → link_e
 ```bash
 cd backend
 uv sync
-uv run uvicorn app.main:app --port 8000      # or: uv run rakshak-api
+uv run uvicorn app.main:app --port 8000
 ```
 Key PS3 endpoints: `GET /ps3/requirements`, `POST /ps3/analyze`, `GET /ps3/analyze/stream` (SSE), `GET /ps3/report.pdf`.
 
@@ -85,4 +85,4 @@ the frontend deploys to Vercel. Full fresh-deploy steps (auth, env vars, CORS): 
 ## Deliverables
 - GitHub repo (this) · Jupyter notebook (`notebooks/`) · sample report JSON+PDF (`docs/ps3_sample_report.*`)
 - Collector architecture / scaling doc (`docs/ps3_collector_architecture.md`, `docs/ps3_scaling.md`)
-- Demo script (`docs/ps3_demo_script.md`)
+- Demo script (`docs/SCRIPT.md`)

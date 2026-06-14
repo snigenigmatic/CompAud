@@ -1,0 +1,1109 @@
+{
+  "request_id": "sample-audit-report",
+  "generated_at": "2026-06-13T12:33:41",
+  "summary": {
+    "total_requirements": 9,
+    "compliant_count": 5,
+    "partial_count": 3,
+    "gap_count": 1,
+    "overall_compliance_pct": 55.6,
+    "coverage_pct": 88.9,
+    "freshness_pct": 29.9,
+    "total_evidence": 508,
+    "linked_evidence_count": 508,
+    "orphan_count": 0,
+    "auto_collected_pct": 100.0,
+    "frameworks": [
+      "CIS",
+      "GDPR",
+      "ISO27001",
+      "NIST",
+      "PCI-DSS",
+      "SOX"
+    ],
+    "exec_summary": "Across 9 requirements, 5 are COMPLIANT, 3 are PARTIAL, and 1 is a GAP, yielding an overall compliance score of 55.6% with 88.9% evidence coverage. Evidence collection is fully automated (100.0%), but overall freshness is low (29.9%), which is the primary driver of PARTIAL results in the audit logging controls. The strongest posture is in encryption controls (at rest, key rotation, and TLS), supported by recent, approved configuration/certificate evidence (CT-a1b2c3d4-0004-s3-enc, CT-a1b2c3d4-0005-s3-enc, CT-a1b2c3d4-0006-rds-enc, EVD00258, CT-a1b2c3d4-0001-kms-rotate, CT-a1b2c3d4-0008-elb-tls). The highest risk items are the administrative MFA requirement with no linked evidence (POL-AC-001-R1) and the logging requirements where available artifacts are stale relative to tight SLAs (EVD00054, EVD00004, EVD00020)."
+  },
+  "requirements": [
+    {
+      "id": "POL-AC-001-R1",
+      "name": "Administrative access requires multi-factor authentication",
+      "text": "Administrative access requires multi-factor authentication",
+      "policy_id": "POL-AC-001",
+      "frameworks": [
+        "NIST",
+        "CIS"
+      ],
+      "status": "GAP",
+      "confidence": 0.1,
+      "freshness_sla_days": 1,
+      "audit_frequency": "Daily",
+      "linked_evidence": [],
+      "narrative": "Status is GAP because there is no linked evidence demonstrating that administrative access requires multi-factor authentication. Proof is missing from the expected sources, specifically Azure AD Configuration and Login Logs, to show MFA enforcement for administrative accounts.",
+      "confidence_rationale": "GAP: no evidence links to this requirement. Expected sources: Azure AD Configuration, Login Logs.",
+      "next_review_date": "2026-06-14",
+      "gaps": [
+        "No evidence collected for this requirement. Expected sources: Azure AD Configuration, Login Logs."
+      ]
+    },
+    {
+      "id": "POL-AC-001-R2",
+      "name": "Access must follow principle of least privilege",
+      "text": "Access must follow principle of least privilege",
+      "policy_id": "POL-AC-001",
+      "frameworks": [
+        "NIST",
+        "SOX"
+      ],
+      "status": "COMPLIANT",
+      "confidence": 0.88,
+      "freshness_sla_days": 90,
+      "audit_frequency": "Quarterly",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00153",
+          "type": "Access_Report",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-12-26",
+          "freshness_days": 76,
+          "confidence_score": 0.97,
+          "link_confidence": 0.7944,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00380",
+          "type": "Access_Report",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-02-22",
+          "freshness_days": 16,
+          "confidence_score": 0.78,
+          "link_confidence": 0.7944,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00478",
+          "type": "Access_Report",
+          "framework": "ISO27001",
+          "collection_date": "2025-10-31",
+          "freshness_days": 63,
+          "confidence_score": 0.88,
+          "link_confidence": 0.7944,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00001",
+          "type": "Access_Report",
+          "framework": "ISO27001",
+          "collection_date": "2026-02-19",
+          "freshness_days": 112,
+          "confidence_score": 0.57,
+          "link_confidence": 0.7944,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        },
+        {
+          "evidence_id": "EVD00011",
+          "type": "Access_Report",
+          "framework": "SOX",
+          "collection_date": "2026-02-19",
+          "freshness_days": 50,
+          "confidence_score": 0.65,
+          "link_confidence": 0.7944,
+          "status": "Rejected",
+          "flags": [
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00025",
+          "type": "Access_Report",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-04-19",
+          "freshness_days": 28,
+          "confidence_score": 0.84,
+          "link_confidence": 0.7944,
+          "status": "Pending_Review",
+          "flags": [
+            "unreviewed"
+          ]
+        },
+        {
+          "evidence_id": "EVD00042",
+          "type": "Access_Report",
+          "framework": "ISO27001",
+          "collection_date": "2026-04-17",
+          "freshness_days": 168,
+          "confidence_score": 0.53,
+          "link_confidence": 0.7944,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00043",
+          "type": "Access_Report",
+          "framework": "ISO27001",
+          "collection_date": "2026-03-16",
+          "freshness_days": 60,
+          "confidence_score": 0.93,
+          "link_confidence": 0.7944,
+          "status": "Needs_Update",
+          "flags": [
+            "needs_update"
+          ]
+        }
+      ],
+      "narrative": "Status is COMPLIANT based on approved access reporting that supports least-privilege access, with the primary supporting artifact within the quarterly SLA (EVD00153). Additional acceptable access reports further corroborate the control, though some older or low-confidence/rejected items exist and were not relied upon (EVD00380, EVD00478, EVD00001, EVD00011).",
+      "confidence_rationale": "COMPLIANT: EVD00153 is Approved, 76d old (within 90d Quarterly SLA), confidence 0.97, link 0.79.",
+      "next_review_date": "2026-05-23",
+      "gaps": []
+    },
+    {
+      "id": "POL-AC-001-R3",
+      "name": "Privileged accounts must have no personal use",
+      "text": "Privileged accounts must have no personal use",
+      "policy_id": "POL-AC-001",
+      "frameworks": [
+        "NIST",
+        "CIS"
+      ],
+      "status": "COMPLIANT",
+      "confidence": 0.79,
+      "freshness_sla_days": 30,
+      "audit_frequency": "Monthly",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00038",
+          "type": "Configuration_Snapshot",
+          "framework": "SOX",
+          "collection_date": "2026-02-10",
+          "freshness_days": 16,
+          "confidence_score": 0.93,
+          "link_confidence": 0.6596,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00235",
+          "type": "Screenshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-02-20",
+          "freshness_days": 11,
+          "confidence_score": 0.85,
+          "link_confidence": 0.6304,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00283",
+          "type": "Screenshot",
+          "framework": "HIPAA",
+          "collection_date": "2026-03-31",
+          "freshness_days": 9,
+          "confidence_score": 0.97,
+          "link_confidence": 0.6304,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00472",
+          "type": "Screenshot",
+          "framework": "GDPR",
+          "collection_date": "2025-12-26",
+          "freshness_days": 5,
+          "confidence_score": 0.72,
+          "link_confidence": 0.6304,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00030",
+          "type": "Configuration_Snapshot",
+          "framework": "NIST",
+          "collection_date": "2026-03-25",
+          "freshness_days": 113,
+          "confidence_score": 0.73,
+          "link_confidence": 0.6596,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00031",
+          "type": "Configuration_Snapshot",
+          "framework": "SOX",
+          "collection_date": "2026-03-09",
+          "freshness_days": 162,
+          "confidence_score": 0.8,
+          "link_confidence": 0.6596,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00056",
+          "type": "Configuration_Snapshot",
+          "framework": "HIPAA",
+          "collection_date": "2025-11-22",
+          "freshness_days": 163,
+          "confidence_score": 0.68,
+          "link_confidence": 0.6596,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00126",
+          "type": "Configuration_Snapshot",
+          "framework": "NIST",
+          "collection_date": "2025-10-24",
+          "freshness_days": 54,
+          "confidence_score": 0.89,
+          "link_confidence": 0.6596,
+          "status": "Pending_Review",
+          "flags": [
+            "stale",
+            "unreviewed"
+          ]
+        }
+      ],
+      "narrative": "Status is COMPLIANT supported by recent, approved configuration and screenshot evidence indicating privileged accounts are restricted from personal use (EVD00038, EVD00235, EVD00283, EVD00472). One older configuration snapshot is flagged as stale and needs update, but the current acceptable evidence is within the monthly SLA (EVD00030, EVD00038).",
+      "confidence_rationale": "COMPLIANT: EVD00038 is Approved, 16d old (within 30d Monthly SLA), confidence 0.93, link 0.66.",
+      "next_review_date": "2026-04-30",
+      "gaps": []
+    },
+    {
+      "id": "POL-AUD-001-R1",
+      "name": "All access to sensitive data must be logged",
+      "text": "All access to sensitive data must be logged",
+      "policy_id": "POL-AUD-001",
+      "frameworks": [
+        "GDPR",
+        "NIST",
+        "SOX"
+      ],
+      "status": "PARTIAL",
+      "confidence": 0.23,
+      "freshness_sla_days": 1,
+      "audit_frequency": "Daily",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00054",
+          "type": "Audit_Log",
+          "framework": "GDPR",
+          "collection_date": "2026-03-08",
+          "freshness_days": 149,
+          "confidence_score": 0.88,
+          "link_confidence": 0.8136,
+          "status": "Approved",
+          "flags": [
+            "stale"
+          ]
+        },
+        {
+          "evidence_id": "EVD00057",
+          "type": "Audit_Log",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-02-28",
+          "freshness_days": 83,
+          "confidence_score": 0.97,
+          "link_confidence": 0.8136,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00073",
+          "type": "Audit_Log",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-01-05",
+          "freshness_days": 23,
+          "confidence_score": 0.55,
+          "link_confidence": 0.8136,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        },
+        {
+          "evidence_id": "EVD00082",
+          "type": "Audit_Log",
+          "framework": "NIST",
+          "collection_date": "2026-01-20",
+          "freshness_days": 48,
+          "confidence_score": 0.91,
+          "link_confidence": 0.8136,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00090",
+          "type": "Audit_Log",
+          "framework": "GDPR",
+          "collection_date": "2025-11-16",
+          "freshness_days": 179,
+          "confidence_score": 0.67,
+          "link_confidence": 0.8136,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        },
+        {
+          "evidence_id": "EVD00101",
+          "type": "Audit_Log",
+          "framework": "GDPR",
+          "collection_date": "2026-04-03",
+          "freshness_days": 74,
+          "confidence_score": 0.58,
+          "link_confidence": 0.8136,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        },
+        {
+          "evidence_id": "EVD00108",
+          "type": "Audit_Log",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-01-25",
+          "freshness_days": 81,
+          "confidence_score": 0.57,
+          "link_confidence": 0.8136,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00110",
+          "type": "Audit_Log",
+          "framework": "SOX",
+          "collection_date": "2026-04-09",
+          "freshness_days": 33,
+          "confidence_score": 0.59,
+          "link_confidence": 0.8136,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "needs_update"
+          ]
+        }
+      ],
+      "narrative": "Status is PARTIAL because the available audit log evidence is stale relative to the daily (1d) SLA, so it does not demonstrate current logging of all access to sensitive data (EVD00054). Additional linked audit log artifacts are also stale and/or low confidence/rejected, limiting assurance of ongoing compliance (EVD00057, EVD00073, EVD00082, EVD00090).",
+      "confidence_rationale": "PARTIAL: best evidence EVD00054 is not fully acceptable (stale); 149d old vs 1d SLA, confidence 0.88.",
+      "next_review_date": "2026-04-21",
+      "gaps": [
+        "85 evidence item(s) are stale (older than the 1d Daily SLA).",
+        "37 item(s) below the 0.70 confidence floor.",
+        "23 item(s) pending review.",
+        "16 item(s) flagged needs-update."
+      ]
+    },
+    {
+      "id": "POL-AUD-001-R2",
+      "name": "Logs must be retained for minimum 90 days",
+      "text": "Logs must be retained for minimum 90 days",
+      "policy_id": "POL-AUD-001",
+      "frameworks": [
+        "PCI-DSS",
+        "NIST"
+      ],
+      "status": "PARTIAL",
+      "confidence": 0.35,
+      "freshness_sla_days": 30,
+      "audit_frequency": "Monthly",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00004",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-01-25",
+          "freshness_days": 40,
+          "confidence_score": 0.84,
+          "link_confidence": 0.6176,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00010",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-04-14",
+          "freshness_days": 127,
+          "confidence_score": 0.74,
+          "link_confidence": 0.6176,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00048",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-12-11",
+          "freshness_days": 113,
+          "confidence_score": 0.52,
+          "link_confidence": 0.6176,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00302",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-04-08",
+          "freshness_days": 164,
+          "confidence_score": 0.99,
+          "link_confidence": 0.6176,
+          "status": "Pending_Review",
+          "flags": [
+            "stale",
+            "unreviewed"
+          ]
+        },
+        {
+          "evidence_id": "EVD00359",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-01-18",
+          "freshness_days": 48,
+          "confidence_score": 0.69,
+          "link_confidence": 0.6176,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00479",
+          "type": "Configuration_Snapshot",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-03-28",
+          "freshness_days": 148,
+          "confidence_score": 0.65,
+          "link_confidence": 0.6176,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00145",
+          "type": "Report",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-12-08",
+          "freshness_days": 133,
+          "confidence_score": 0.76,
+          "link_confidence": 0.5961,
+          "status": "Approved",
+          "flags": [
+            "stale"
+          ]
+        },
+        {
+          "evidence_id": "EVD00215",
+          "type": "Report",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-04-01",
+          "freshness_days": 117,
+          "confidence_score": 0.51,
+          "link_confidence": 0.5961,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        }
+      ],
+      "narrative": "Status is PARTIAL because the best available retention configuration snapshot is older than the monthly (30d) SLA and marked as needing update, so it does not provide timely proof of 90-day minimum log retention (EVD00004). Other linked snapshots are also stale and include rejected, low-confidence, or unreviewed items, which reduces confidence in the current retention posture (EVD00010, EVD00048, EVD00302, EVD00359).",
+      "confidence_rationale": "PARTIAL: best evidence EVD00004 is not fully acceptable (stale, needs_update); 40d old vs 30d SLA, confidence 0.84.",
+      "next_review_date": "2026-05-17",
+      "gaps": [
+        "26 evidence item(s) are stale (older than the 30d Monthly SLA).",
+        "17 item(s) below the 0.70 confidence floor.",
+        "7 item(s) pending review.",
+        "10 item(s) flagged needs-update."
+      ]
+    },
+    {
+      "id": "POL-AUD-001-R3",
+      "name": "Log access must be restricted and monitored",
+      "text": "Log access must be restricted and monitored",
+      "policy_id": "POL-AUD-001",
+      "frameworks": [
+        "ISO27001",
+        "NIST"
+      ],
+      "status": "PARTIAL",
+      "confidence": 0.23,
+      "freshness_sla_days": 7,
+      "audit_frequency": "Weekly",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00020",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2025-11-18",
+          "freshness_days": 166,
+          "confidence_score": 0.8,
+          "link_confidence": 0.7748,
+          "status": "Pending_Review",
+          "flags": [
+            "stale",
+            "unreviewed"
+          ]
+        },
+        {
+          "evidence_id": "EVD00062",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2025-10-31",
+          "freshness_days": 54,
+          "confidence_score": 0.79,
+          "link_confidence": 0.7748,
+          "status": "Approved",
+          "flags": [
+            "stale"
+          ]
+        },
+        {
+          "evidence_id": "EVD00208",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2026-02-22",
+          "freshness_days": 130,
+          "confidence_score": 0.6,
+          "link_confidence": 0.7748,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00316",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2025-12-19",
+          "freshness_days": 18,
+          "confidence_score": 0.54,
+          "link_confidence": 0.7748,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00364",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2026-01-13",
+          "freshness_days": 29,
+          "confidence_score": 0.73,
+          "link_confidence": 0.7748,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00456",
+          "type": "Audit_Log",
+          "framework": "ISO27001",
+          "collection_date": "2025-11-10",
+          "freshness_days": 164,
+          "confidence_score": 0.61,
+          "link_confidence": 0.7748,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        }
+      ],
+      "narrative": "Status is PARTIAL because the strongest evidence for restricting and monitoring log access is stale and unreviewed relative to the weekly (7d) SLA, so it cannot substantiate current enforcement (EVD00020). The remaining linked artifacts are also stale and/or low confidence/rejected/needs update, preventing full assurance that log access is presently restricted and monitored (EVD00062, EVD00208, EVD00316, EVD00364).",
+      "confidence_rationale": "PARTIAL: best evidence EVD00020 is not fully acceptable (stale, unreviewed); 166d old vs 7d SLA, confidence 0.80.",
+      "next_review_date": "2026-03-01",
+      "gaps": [
+        "6 evidence item(s) are stale (older than the 7d Weekly SLA).",
+        "3 item(s) below the 0.70 confidence floor.",
+        "1 item(s) pending review.",
+        "1 item(s) flagged needs-update."
+      ]
+    },
+    {
+      "id": "POL-ENC-001-R1",
+      "name": "All data at rest must be encrypted using AES-256 or stronger",
+      "text": "All data at rest must be encrypted using AES-256 or stronger",
+      "policy_id": "POL-ENC-001",
+      "frameworks": [
+        "PCI-DSS",
+        "GDPR",
+        "NIST"
+      ],
+      "status": "COMPLIANT",
+      "confidence": 0.84,
+      "freshness_sla_days": 30,
+      "audit_frequency": "Monthly",
+      "linked_evidence": [
+        {
+          "evidence_id": "CT-a1b2c3d4-0004-s3-enc",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-06-12",
+          "freshness_days": 1,
+          "confidence_score": 0.9,
+          "link_confidence": 0.7721,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "CT-a1b2c3d4-0005-s3-enc",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-06-10",
+          "freshness_days": 3,
+          "confidence_score": 0.9,
+          "link_confidence": 0.7721,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "CT-a1b2c3d4-0006-rds-enc",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-06-08",
+          "freshness_days": 5,
+          "confidence_score": 0.9,
+          "link_confidence": 0.7721,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00015",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-12-13",
+          "freshness_days": 99,
+          "confidence_score": 0.79,
+          "link_confidence": 0.7721,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00077",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-03-11",
+          "freshness_days": 173,
+          "confidence_score": 0.53,
+          "link_confidence": 0.7721,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00114",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-11-15",
+          "freshness_days": 21,
+          "confidence_score": 0.97,
+          "link_confidence": 0.7721,
+          "status": "Rejected",
+          "flags": [
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00174",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2026-01-31",
+          "freshness_days": 33,
+          "confidence_score": 0.57,
+          "link_confidence": 0.7721,
+          "status": "Approved",
+          "flags": [
+            "stale",
+            "low_confidence"
+          ]
+        },
+        {
+          "evidence_id": "EVD00214",
+          "type": "Encryption_Cert",
+          "framework": "PCI-DSS",
+          "collection_date": "2025-11-25",
+          "freshness_days": 92,
+          "confidence_score": 0.82,
+          "link_confidence": 0.7721,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "rejected"
+          ]
+        }
+      ],
+      "narrative": "Status is COMPLIANT supported by recent, approved encryption certificates/configuration evidence showing data at rest encryption meeting the stated standard, within the monthly SLA (CT-a1b2c3d4-0004-s3-enc, CT-a1b2c3d4-0005-s3-enc, CT-a1b2c3d4-0006-rds-enc). Older encryption artifacts exist but are stale/rejected and were not required to establish current compliance (EVD00015, EVD00077).",
+      "confidence_rationale": "COMPLIANT: CT-a1b2c3d4-0004-s3-enc is Approved, 1d old (within 30d Monthly SLA), confidence 0.90, link 0.77.",
+      "next_review_date": "2026-07-12",
+      "gaps": []
+    },
+    {
+      "id": "POL-ENC-001-R2",
+      "name": "Encryption keys must be rotated at least annually",
+      "text": "Encryption keys must be rotated at least annually",
+      "policy_id": "POL-ENC-001",
+      "frameworks": [
+        "ISO27001",
+        "NIST"
+      ],
+      "status": "COMPLIANT",
+      "confidence": 0.74,
+      "freshness_sla_days": 90,
+      "audit_frequency": "Quarterly",
+      "linked_evidence": [
+        {
+          "evidence_id": "EVD00258",
+          "type": "Report",
+          "framework": "NIST",
+          "collection_date": "2025-11-06",
+          "freshness_days": 5,
+          "confidence_score": 0.85,
+          "link_confidence": 0.64,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00360",
+          "type": "Report",
+          "framework": "HIPAA",
+          "collection_date": "2025-10-23",
+          "freshness_days": 84,
+          "confidence_score": 0.79,
+          "link_confidence": 0.64,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00049",
+          "type": "Procedure_Evidence",
+          "framework": "SOX",
+          "collection_date": "2026-01-21",
+          "freshness_days": 16,
+          "confidence_score": 1.0,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00170",
+          "type": "Procedure_Evidence",
+          "framework": "HIPAA",
+          "collection_date": "2026-03-07",
+          "freshness_days": 82,
+          "confidence_score": 0.82,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00347",
+          "type": "Procedure_Evidence",
+          "framework": "GDPR",
+          "collection_date": "2026-03-15",
+          "freshness_days": 7,
+          "confidence_score": 0.99,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00350",
+          "type": "Procedure_Evidence",
+          "framework": "HIPAA",
+          "collection_date": "2026-01-06",
+          "freshness_days": 59,
+          "confidence_score": 0.79,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00363",
+          "type": "Procedure_Evidence",
+          "framework": "HIPAA",
+          "collection_date": "2026-02-05",
+          "freshness_days": 52,
+          "confidence_score": 0.86,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00386",
+          "type": "Procedure_Evidence",
+          "framework": "NIST",
+          "collection_date": "2025-12-31",
+          "freshness_days": 16,
+          "confidence_score": 0.85,
+          "link_confidence": 0.6239,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        }
+      ],
+      "narrative": "Status is COMPLIANT based on recent, approved key management reporting and supporting procedure evidence demonstrating annual (or better) key rotation within the quarterly SLA (EVD00258, EVD00049, EVD00347). Additional acceptable evidence within the SLA further supports the control’s ongoing operation (EVD00360, EVD00170).",
+      "confidence_rationale": "COMPLIANT: EVD00258 is Approved, 5d old (within 90d Quarterly SLA), confidence 0.85, link 0.64.",
+      "next_review_date": "2026-07-01",
+      "gaps": []
+    },
+    {
+      "id": "POL-ENC-001-R3",
+      "name": "Data in transit must use TLS 1.2 or higher",
+      "text": "Data in transit must use TLS 1.2 or higher",
+      "policy_id": "POL-ENC-001",
+      "frameworks": [
+        "GDPR",
+        "NIST"
+      ],
+      "status": "COMPLIANT",
+      "confidence": 0.84,
+      "freshness_sla_days": 1,
+      "audit_frequency": "Continuous",
+      "linked_evidence": [
+        {
+          "evidence_id": "CT-a1b2c3d4-0001-kms-rotate",
+          "type": "Encryption_Cert",
+          "framework": "ISO27001",
+          "collection_date": "2026-06-12",
+          "freshness_days": 1,
+          "confidence_score": 0.9,
+          "link_confidence": 0.7852,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "CT-a1b2c3d4-0008-elb-tls",
+          "type": "Encryption_Cert",
+          "framework": "GDPR",
+          "collection_date": "2026-06-12",
+          "freshness_days": 1,
+          "confidence_score": 0.9,
+          "link_confidence": 0.7852,
+          "status": "Approved",
+          "flags": [
+            "acceptable"
+          ]
+        },
+        {
+          "evidence_id": "EVD00002",
+          "type": "Encryption_Cert",
+          "framework": "HIPAA",
+          "collection_date": "2025-11-02",
+          "freshness_days": 153,
+          "confidence_score": 0.94,
+          "link_confidence": 0.7852,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00009",
+          "type": "Encryption_Cert",
+          "framework": "ISO27001",
+          "collection_date": "2025-11-03",
+          "freshness_days": 122,
+          "confidence_score": 0.7,
+          "link_confidence": 0.7852,
+          "status": "Pending_Review",
+          "flags": [
+            "stale",
+            "unreviewed"
+          ]
+        },
+        {
+          "evidence_id": "EVD00012",
+          "type": "Encryption_Cert",
+          "framework": "ISO27001",
+          "collection_date": "2026-04-01",
+          "freshness_days": 134,
+          "confidence_score": 0.54,
+          "link_confidence": 0.7852,
+          "status": "Rejected",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "rejected"
+          ]
+        },
+        {
+          "evidence_id": "EVD00014",
+          "type": "Encryption_Cert",
+          "framework": "GDPR",
+          "collection_date": "2026-02-26",
+          "freshness_days": 25,
+          "confidence_score": 0.73,
+          "link_confidence": 0.7852,
+          "status": "Pending_Review",
+          "flags": [
+            "stale",
+            "unreviewed"
+          ]
+        },
+        {
+          "evidence_id": "EVD00017",
+          "type": "Encryption_Cert",
+          "framework": "SOX",
+          "collection_date": "2026-03-28",
+          "freshness_days": 42,
+          "confidence_score": 0.54,
+          "link_confidence": 0.7852,
+          "status": "Needs_Update",
+          "flags": [
+            "stale",
+            "low_confidence",
+            "needs_update"
+          ]
+        },
+        {
+          "evidence_id": "EVD00039",
+          "type": "Encryption_Cert",
+          "framework": "NIST",
+          "collection_date": "2026-03-11",
+          "freshness_days": 40,
+          "confidence_score": 0.85,
+          "link_confidence": 0.7852,
+          "status": "Approved",
+          "flags": [
+            "stale"
+          ]
+        }
+      ],
+      "narrative": "Status is COMPLIANT supported by recent, approved certificate/configuration evidence indicating TLS 1.2 or higher for data in transit, meeting the continuous (1d) SLA (CT-a1b2c3d4-0001-kms-rotate, CT-a1b2c3d4-0008-elb-tls). Older artifacts are present but are stale/unreviewed/rejected and were not relied upon for current-state validation (EVD00002, EVD00009, EVD00012).",
+      "confidence_rationale": "COMPLIANT: CT-a1b2c3d4-0001-kms-rotate is Approved, 1d old (within 1d Continuous SLA), confidence 0.90, link 0.79.",
+      "next_review_date": "2026-06-13",
+      "gaps": []
+    }
+  ],
+  "orphan_evidence_ids": [],
+  "agent_trace": [
+    {
+      "agent": "Policy Parser",
+      "status": "completed",
+      "summary": "9 requirements parsed"
+    },
+    {
+      "agent": "Collectors",
+      "status": "completed",
+      "summary": "508 evidence auto-collected"
+    },
+    {
+      "agent": "Semantic Linker",
+      "status": "completed",
+      "summary": "508 links, 0 unmapped"
+    },
+    {
+      "agent": "Quality Engine",
+      "status": "completed",
+      "summary": "5 compliant / 3 partial / 1 gap"
+    },
+    {
+      "agent": "Report Writer",
+      "status": "completed",
+      "summary": "Narratives + executive summary assembled"
+    }
+  ],
+  "disclaimer": "Compliance statuses are derived deterministically from evidence attributes (freshness vs audit-frequency SLA, confidence, review status) and semantic linking — not from the dataset's provided anomaly labels, which were found inconsistent with the underlying evidence. Narratives are LLM-written from these computed facts. Review with a qualified auditor."
+}

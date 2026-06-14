@@ -30,20 +30,21 @@ Model modules are intentionally small:
 Run these from `backend/`:
 
 ```bash
-uv run rakshak-api
-uv run rakshak-phoenix
-uv run rakshak-dev
-uv run rakshak-openapi --output openapi.json
+uv run compaud-api
+uv run compaud-phoenix
+uv run compaud-dev
+uv run compaud-openapi --output openapi.json
 uv run pytest
 ```
 
 Command purpose:
 
-- `rakshak-api`: starts FastAPI on `API_HOST` / `API_PORT`.
-- `rakshak-phoenix`: starts local Phoenix for traces.
-- `rakshak-dev`: starts Phoenix and FastAPI together.
-- `rakshak-dev --no-phoenix`: starts only FastAPI through the same dev runner.
-- `rakshak-openapi`: exports the OpenAPI spec for HeyAPI.
+- `compaud-api`: starts FastAPI on `API_HOST` / `API_PORT`.
+- `compaud-phoenix`: starts local Phoenix for traces.
+- `compaud-dev`: starts Phoenix and FastAPI together.
+- `compaud-dev --no-phoenix`: starts only FastAPI through the same dev runner.
+- `compaud-openapi`: exports the OpenAPI spec for HeyAPI.
+
 
 ## Checkpoint 0
 
