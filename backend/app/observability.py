@@ -8,7 +8,7 @@ from opentelemetry.trace import Span, Status, StatusCode
 from app.config import Settings
 
 
-TRACER_NAME = "rakshak-ai-backend"
+TRACER_NAME = "compaud-backend"
 _tracer_provider_configured = False
 _tracer_provider = None
 

@@ -10,8 +10,13 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from app.models.analysis import AgentTraceEntry
 from app.models.base import APIModel
+
+class AgentTraceEntry(APIModel):
+    agent: str
+    status: str
+    summary: str
+    error: str | None = None
 
 
 class Requirement(APIModel):
@@ -69,7 +74,7 @@ class RequirementStatusResult(APIModel):
     linked_evidence_ids: list[str] = Field(default_factory=list)
 
 
-# --- Frontend-facing response envelope (mirrors Rakshak AnalysisResponse shape) ---
+# --- Frontend-facing response envelope shape ---
 
 
 class PS3LinkedEvidenceView(APIModel):

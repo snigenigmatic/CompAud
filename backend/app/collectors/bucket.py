@@ -12,7 +12,6 @@ import logging
 from datetime import date, datetime
 from pathlib import Path
 
-from app.agents.evidence import parse_evidence_upload
 from app.collectors.base import Collector
 from app.config import REPO_ROOT
 from app.models.ps3 import Evidence
@@ -49,13 +48,9 @@ class BucketCollector(Collector):
         return evidence
 
     def _collect_csv(self, path: Path) -> list[Evidence]:
-        package = parse_evidence_upload(path.name, path.read_bytes())
+        from app.services.ps3_evidence_loader import load_evidence_csv
         source = f"bucket:{path.name}"
-        rows: list[Evidence] = []
-        for chunk in package.chunks:
-            evidence = evidence_from_fields(chunk.parsed_fields, source=source)
-            if evidence is not None:
-                rows.append(evidence)
+        rows = load_evidence_csv(path, source=source)
         logger.info("BucketCollector parsed %d rows from %s", len(rows), path.name)
         return rows
 

@@ -8,6 +8,17 @@
             "title": "Agent",
             "type": "string"
           },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
           "status": {
             "title": "Status",
             "type": "string"
@@ -17,435 +28,12 @@
             "type": "string"
           }
         },
-        "required": ["agent", "status", "summary"],
-        "title": "AgentTraceEntry",
-        "type": "object"
-      },
-      "AnalysisResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "agent_trace": {
-            "items": {
-              "$ref": "#/components/schemas/AgentTraceEntry"
-            },
-            "title": "Agent Trace",
-            "type": "array"
-          },
-          "artifacts": {
-            "items": {
-              "$ref": "#/components/schemas/EvidenceArtifact"
-            },
-            "title": "Artifacts",
-            "type": "array"
-          },
-          "controls": {
-            "items": {
-              "$ref": "#/components/schemas/ControlReportResult"
-            },
-            "title": "Controls",
-            "type": "array"
-          },
-          "disclaimer": {
-            "title": "Disclaimer",
-            "type": "string"
-          },
-          "request_id": {
-            "title": "Request Id",
-            "type": "string"
-          },
-          "summary": {
-            "$ref": "#/components/schemas/AnalysisSummary"
-          },
-          "uploaded_filename": {
-            "title": "Uploaded Filename",
-            "type": "string"
-          }
-        },
         "required": [
-          "request_id",
-          "uploaded_filename",
-          "summary",
-          "artifacts",
-          "controls",
-          "agent_trace",
-          "disclaimer"
-        ],
-        "title": "AnalysisResponse",
-        "type": "object"
-      },
-      "AnalysisSummary": {
-        "additionalProperties": false,
-        "properties": {
-          "needs_prep_count": {
-            "title": "Needs Prep Count",
-            "type": "integer"
-          },
-          "partial_count": {
-            "title": "Partial Count",
-            "type": "integer"
-          },
-          "ready_count": {
-            "title": "Ready Count",
-            "type": "integer"
-          },
-          "top_auditor_questions": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Top Auditor Questions",
-            "type": "array"
-          },
-          "total_controls": {
-            "title": "Total Controls",
-            "type": "integer"
-          },
-          "total_gap_count": {
-            "title": "Total Gap Count",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "total_controls",
-          "ready_count",
-          "partial_count",
-          "needs_prep_count",
-          "total_gap_count",
-          "top_auditor_questions"
-        ],
-        "title": "AnalysisSummary",
-        "type": "object"
-      },
-      "ApiErrorDetail": {
-        "additionalProperties": false,
-        "properties": {
-          "code": {
-            "title": "Code",
-            "type": "string"
-          },
-          "message": {
-            "title": "Message",
-            "type": "string"
-          }
-        },
-        "required": ["code", "message"],
-        "title": "ApiErrorDetail",
-        "type": "object"
-      },
-      "Body_analyzeEvidence": {
-        "properties": {
-          "file": {
-            "contentMediaType": "application/octet-stream",
-            "title": "File",
-            "type": "string"
-          }
-        },
-        "required": ["file"],
-        "title": "Body_analyzeEvidence",
-        "type": "object"
-      },
-      "Body_streamAnalyzeEvidence": {
-        "properties": {
-          "file": {
-            "contentMediaType": "application/octet-stream",
-            "title": "File",
-            "type": "string"
-          }
-        },
-        "required": ["file"],
-        "title": "Body_streamAnalyzeEvidence",
-        "type": "object"
-      },
-      "ComplianceScores": {
-        "additionalProperties": false,
-        "properties": {
-          "compliance_effort": {
-            "default": 0,
-            "title": "Compliance Effort",
-            "type": "integer"
-          },
-          "letter_of_law": {
-            "default": 0,
-            "title": "Letter Of Law",
-            "type": "integer"
-          },
-          "spirit_of_law": {
-            "default": 0,
-            "title": "Spirit Of Law",
-            "type": "integer"
-          }
-        },
-        "title": "ComplianceScores",
-        "type": "object"
-      },
-      "ControlCatalogResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "controls": {
-            "items": {
-              "$ref": "#/components/schemas/ControlRequirement"
-            },
-            "title": "Controls",
-            "type": "array"
-          },
-          "count": {
-            "title": "Count",
-            "type": "integer"
-          },
-          "source": {
-            "title": "Source",
-            "type": "string"
-          }
-        },
-        "required": ["source", "count", "controls"],
-        "title": "ControlCatalogResponse",
-        "type": "object"
-      },
-      "ControlEvidenceFound": {
-        "additionalProperties": false,
-        "properties": {
-          "artifact": {
-            "title": "Artifact",
-            "type": "string"
-          },
-          "claim": {
-            "title": "Claim",
-            "type": "string"
-          },
-          "hash": {
-            "title": "Hash",
-            "type": "string"
-          },
-          "location": {
-            "title": "Location",
-            "type": "string"
-          }
-        },
-        "required": ["claim", "artifact", "location", "hash"],
-        "title": "ControlEvidenceFound",
-        "type": "object"
-      },
-      "ControlReportResult": {
-        "additionalProperties": false,
-        "properties": {
-          "agent_plan": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Agent Plan",
-            "type": "array"
-          },
-          "artifact": {
-            "title": "Artifact",
-            "type": "string"
-          },
-          "confidence": {
-            "title": "Confidence",
-            "type": "number"
-          },
-          "confidence_rationale": {
-            "title": "Confidence Rationale",
-            "type": "string"
-          },
-          "evidence_found": {
-            "items": {
-              "$ref": "#/components/schemas/ControlEvidenceFound"
-            },
-            "title": "Evidence Found",
-            "type": "array"
-          },
-          "gaps": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Gaps",
-            "type": "array"
-          },
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "llm_reasoning": {
-            "default": "",
-            "title": "Llm Reasoning",
-            "type": "string"
-          },
-          "name": {
-            "title": "Name",
-            "type": "string"
-          },
-          "priority": {
-            "title": "Priority",
-            "type": "string"
-          },
-          "provenance": {
-            "title": "Provenance",
-            "type": "string"
-          },
-          "reasoning": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Reasoning",
-            "type": "array"
-          },
-          "regulation_story": {
-            "title": "Regulation Story",
-            "type": "string"
-          },
-          "regulatory_citations": {
-            "default": [],
-            "items": {
-              "type": "string"
-            },
-            "title": "Regulatory Citations",
-            "type": "array"
-          },
-          "reviewer_question": {
-            "title": "Reviewer Question",
-            "type": "string"
-          },
-          "risk_summary": {
-            "title": "Risk Summary",
-            "type": "string"
-          },
-          "scores": {
-            "$ref": "#/components/schemas/ComplianceScores",
-            "default": {
-              "compliance_effort": 0,
-              "letter_of_law": 0,
-              "spirit_of_law": 0
-            }
-          },
-          "status": {
-            "title": "Status",
-            "type": "string"
-          },
-          "suggestion": {
-            "title": "Suggestion",
-            "type": "string"
-          },
-          "tool_trace": {
-            "items": {
-              "$ref": "#/components/schemas/ToolTraceEntry"
-            },
-            "title": "Tool Trace",
-            "type": "array"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "priority",
+          "agent",
           "status",
-          "confidence",
-          "regulation_story",
-          "artifact",
-          "reasoning",
-          "reviewer_question",
-          "suggestion",
-          "provenance",
-          "risk_summary",
-          "evidence_found",
-          "gaps",
-          "agent_plan",
-          "tool_trace",
-          "confidence_rationale"
+          "summary"
         ],
-        "title": "ControlReportResult",
-        "type": "object"
-      },
-      "ControlRequirement": {
-        "additionalProperties": false,
-        "properties": {
-          "common_reviewer_questions": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Common Reviewer Questions",
-            "type": "array"
-          },
-          "demo_status_target": {
-            "title": "Demo Status Target",
-            "type": "string"
-          },
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "mission": {
-            "title": "Mission",
-            "type": "string"
-          },
-          "name": {
-            "title": "Name",
-            "type": "string"
-          },
-          "priority": {
-            "title": "Priority",
-            "type": "string"
-          },
-          "regulation_story": {
-            "title": "Regulation Story",
-            "type": "string"
-          },
-          "required_evidence_elements": {
-            "items": {
-              "$ref": "#/components/schemas/RequiredEvidenceElement"
-            },
-            "title": "Required Evidence Elements",
-            "type": "array"
-          },
-          "target_artifacts": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Target Artifacts",
-            "type": "array"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "priority",
-          "regulation_story",
-          "mission",
-          "demo_status_target",
-          "target_artifacts",
-          "required_evidence_elements",
-          "common_reviewer_questions"
-        ],
-        "title": "ControlRequirement",
-        "type": "object"
-      },
-      "ErrorResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/ApiErrorDetail"
-          }
-        },
-        "required": ["error"],
-        "title": "ErrorResponse",
-        "type": "object"
-      },
-      "EvidenceArtifact": {
-        "additionalProperties": false,
-        "properties": {
-          "chunk_count": {
-            "title": "Chunk Count",
-            "type": "integer"
-          },
-          "extension": {
-            "title": "Extension",
-            "type": "string"
-          },
-          "name": {
-            "title": "Name",
-            "type": "string"
-          }
-        },
-        "required": ["name", "extension", "chunk_count"],
-        "title": "EvidenceArtifact",
+        "title": "AgentTraceEntry",
         "type": "object"
       },
       "HTTPValidationError": {
@@ -602,7 +190,11 @@
             "$ref": "#/components/schemas/PS3Summary"
           }
         },
-        "required": ["request_id", "generated_at", "summary"],
+        "required": [
+          "request_id",
+          "generated_at",
+          "summary"
+        ],
         "title": "PS3ReportResponse",
         "type": "object"
       },
@@ -682,55 +274,6 @@
         "title": "PS3Summary",
         "type": "object"
       },
-      "RequiredEvidenceElement": {
-        "additionalProperties": false,
-        "properties": {
-          "critical": {
-            "title": "Critical",
-            "type": "boolean"
-          },
-          "description": {
-            "title": "Description",
-            "type": "string"
-          },
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "label": {
-            "title": "Label",
-            "type": "string"
-          },
-          "negative_terms": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Negative Terms",
-            "type": "array"
-          },
-          "reviewer_gap": {
-            "title": "Reviewer Gap",
-            "type": "string"
-          },
-          "search_terms": {
-            "items": {
-              "type": "string"
-            },
-            "title": "Search Terms",
-            "type": "array"
-          }
-        },
-        "required": [
-          "id",
-          "label",
-          "description",
-          "search_terms",
-          "critical",
-          "reviewer_gap"
-        ],
-        "title": "RequiredEvidenceElement",
-        "type": "object"
-      },
       "Requirement": {
         "additionalProperties": false,
         "properties": {
@@ -792,7 +335,13 @@
             "type": "string"
           }
         },
-        "required": ["id", "policy_id", "policy_name", "text", "raw_text"],
+        "required": [
+          "id",
+          "policy_id",
+          "policy_name",
+          "text",
+          "raw_text"
+        ],
         "title": "Requirement",
         "type": "object"
       },
@@ -815,7 +364,10 @@
             "type": "string"
           }
         },
-        "required": ["source", "count"],
+        "required": [
+          "source",
+          "count"
+        ],
         "title": "RequirementCatalogResponse",
         "type": "object"
       },
@@ -904,26 +456,6 @@
         "title": "RequirementReport",
         "type": "object"
       },
-      "ToolTraceEntry": {
-        "additionalProperties": false,
-        "properties": {
-          "input": {
-            "title": "Input",
-            "type": "string"
-          },
-          "result": {
-            "title": "Result",
-            "type": "string"
-          },
-          "tool": {
-            "title": "Tool",
-            "type": "string"
-          }
-        },
-        "required": ["tool", "input", "result"],
-        "title": "ToolTraceEntry",
-        "type": "object"
-      },
       "ValidationError": {
         "properties": {
           "ctx": {
@@ -956,7 +488,11 @@
             "type": "string"
           }
         },
-        "required": ["loc", "msg", "type"],
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
         "title": "ValidationError",
         "type": "object"
       }
@@ -969,157 +505,6 @@
   },
   "openapi": "3.1.0",
   "paths": {
-    "/analyze": {
-      "post": {
-        "operationId": "analyzeEvidence",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_analyzeEvidence"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AnalysisResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "description": "Invalid evidence upload."
-          },
-          "415": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "description": "Unsupported evidence file type."
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Analyze uploaded compliance evidence",
-        "tags": ["analysis"]
-      }
-    },
-    "/analyze/stream": {
-      "post": {
-        "operationId": "streamAnalyzeEvidence",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_streamAnalyzeEvidence"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Stream uploaded compliance evidence analysis progress",
-        "tags": ["analysis"]
-      }
-    },
-    "/controls": {
-      "get": {
-        "operationId": "getControls",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ControlCatalogResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          }
-        },
-        "summary": "Get compliance control catalog",
-        "tags": ["controls"]
-      }
-    },
-    "/demo/golden": {
-      "get": {
-        "operationId": "getDemoGolden",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AnalysisResponse"
-                }
-              }
-            },
-            "description": "Successful Response"
-          }
-        },
-        "summary": "Get deterministic demo analysis",
-        "tags": ["analysis"]
-      }
-    },
-    "/demo/golden/stream": {
-      "get": {
-        "operationId": "streamDemoGolden",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            },
-            "description": "Successful Response"
-          }
-        },
-        "summary": "Stream deterministic demo analysis progress",
-        "tags": ["analysis"]
-      }
-    },
     "/health": {
       "get": {
         "operationId": "getHealth",
@@ -1136,221 +521,9 @@
           }
         },
         "summary": "Get backend health",
-        "tags": ["system"]
-      }
-    },
-    "/knowledge/context/{control_id}": {
-      "get": {
-        "operationId": "getControlRegulatoryContext",
-        "parameters": [
-          {
-            "description": "Control ID, e.g. FT-IAM-01",
-            "in": "path",
-            "name": "control_id",
-            "required": true,
-            "schema": {
-              "description": "Control ID, e.g. FT-IAM-01",
-              "title": "Control Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": true,
-                  "title": "Response Getcontrolregulatorycontext",
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Get full regulatory context for a control",
-        "tags": ["knowledge"]
-      }
-    },
-    "/knowledge/priority/{priority}": {
-      "get": {
-        "operationId": "getRulesByPriority",
-        "parameters": [
-          {
-            "description": "Priority level, e.g. P1_Critical",
-            "in": "path",
-            "name": "priority",
-            "required": true,
-            "schema": {
-              "description": "Priority level, e.g. P1_Critical",
-              "title": "Priority",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "additionalProperties": true,
-                    "type": "object"
-                  },
-                  "title": "Response Getrulesbypriority",
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Get all rules at a given priority level",
-        "tags": ["knowledge"]
-      }
-    },
-    "/knowledge/rules/{control_id}": {
-      "get": {
-        "operationId": "getControlGoverningRules",
-        "parameters": [
-          {
-            "description": "Control ID, e.g. FT-IAM-01",
-            "in": "path",
-            "name": "control_id",
-            "required": true,
-            "schema": {
-              "description": "Control ID, e.g. FT-IAM-01",
-              "title": "Control Id",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "additionalProperties": true,
-                    "type": "object"
-                  },
-                  "title": "Response Getcontrolgoverningrules",
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Get governing rules for a control from official regulatory sources",
-        "tags": ["knowledge"]
-      }
-    },
-    "/knowledge/search": {
-      "get": {
-        "operationId": "searchRules",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "q",
-            "required": true,
-            "schema": {
-              "title": "Q",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "required": false,
-            "schema": {
-              "default": 10,
-              "title": "Limit",
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "additionalProperties": true,
-                    "type": "object"
-                  },
-                  "title": "Response Searchrules",
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
-          }
-        },
-        "summary": "Full-text search across regulatory rule text",
-        "tags": ["knowledge"]
-      }
-    },
-    "/knowledge/stats": {
-      "get": {
-        "operationId": "getKnowledgeGraphStats",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": true,
-                  "title": "Response Getknowledgegraphstats",
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful Response"
-          }
-        },
-        "summary": "Get knowledge graph node and relationship counts",
-        "tags": ["knowledge"]
+        "tags": [
+          "system"
+        ]
       }
     },
     "/ps3/analyze": {
@@ -1369,7 +542,9 @@
           }
         },
         "summary": "Run the full PS3 compliance analysis (collect -> link -> evaluate -> report)",
-        "tags": ["ps3"]
+        "tags": [
+          "ps3"
+        ]
       }
     },
     "/ps3/analyze/stream": {
@@ -1386,7 +561,9 @@
           }
         },
         "summary": "Stream PS3 compliance analysis progress (SSE)",
-        "tags": ["ps3"]
+        "tags": [
+          "ps3"
+        ]
       }
     },
     "/ps3/report.pdf": {
@@ -1404,7 +581,9 @@
           }
         },
         "summary": "Download the PS3 audit report as PDF",
-        "tags": ["ps3"]
+        "tags": [
+          "ps3"
+        ]
       }
     },
     "/ps3/requirements": {
@@ -1423,7 +602,9 @@
           }
         },
         "summary": "Get parsed policy requirements",
-        "tags": ["ps3"]
+        "tags": [
+          "ps3"
+        ]
       }
     },
     "/ps3/requirements/{requirement_id}": {
@@ -1463,7 +644,9 @@
           }
         },
         "summary": "Get a single parsed requirement by minted id",
-        "tags": ["ps3"]
+        "tags": [
+          "ps3"
+        ]
       }
     }
   },
@@ -1471,14 +654,6 @@
     {
       "description": "Backend health and runtime configuration.",
       "name": "system"
-    },
-    {
-      "description": "Compliance control catalog endpoints.",
-      "name": "controls"
-    },
-    {
-      "description": "Evidence analysis endpoints.",
-      "name": "analysis"
     },
     {
       "description": "Automated compliance evidence collection & audit (PS3).",

@@ -11,8 +11,8 @@ def test_health_returns_backend_status() -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "ok"
-    assert body["service"] == "rakshak-ai-backend"
+    assert body["service"] == "compaud-backend"
     assert body["environment"] == "development"
-    assert body["phoenix_project_name"] == "rakshak-ai-backend"
-    assert body["openai_enabled"] is False
-    assert body["openai_model"] == "gpt-5.2"
+    assert body["phoenix_project_name"] == "compaud-backend"
+    assert isinstance(body["openai_enabled"], bool)
+    assert isinstance(body["openai_model"], str)

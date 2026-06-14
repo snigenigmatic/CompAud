@@ -346,7 +346,10 @@ export default function Home() {
       <section className="rk-report-title">
         <span className="rk-eyebrow">{summary.total_requirements} requirements · {summary.total_evidence} evidence auto-collected</span>
         <h1>Compliance audit report</h1>
-        <p className="rk-muted">{summary.exec_summary}</p>
+        <div className="rk-exec-summary-box">
+          <span className="rk-exec-summary-title">Executive Summary</span>
+          <p>{summary.exec_summary}</p>
+        </div>
       </section>
 
       <section className="rk-summary-strip">

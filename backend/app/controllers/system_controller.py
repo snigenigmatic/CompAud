@@ -17,7 +17,7 @@ def health() -> HealthResponse:
     settings = get_settings()
     return HealthResponse(
         status="ok",
-        service="rakshak-ai-backend",
+        service="compaud-backend",
         environment=settings.app_env,
         phoenix_enabled=settings.phoenix_enabled,
         phoenix_project_name=settings.phoenix_project_name,
