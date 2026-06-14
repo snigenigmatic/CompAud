@@ -7,7 +7,7 @@ compliance report — and it does it by refusing to trust the data's misleading 
 "Auditors ask: for each policy requirement, is there fresh, trustworthy evidence? Today that's
 weeks of manual spreadsheet work. We automate it: parse → collect → link → evaluate → report."
 
-### 0:20 — The twist: we audited the data first (45s)  ← differentiator
+### 0:20 — The twist: we audited the data first (45s)
 Open the notebook's Phase-0 cell.
 - "The CSV ships a `requirement_id` and `requirement_description` — but the description is the
   **same string on all 500 rows**, and the ids are fake. Joining on them links 500 rows to nothing."
@@ -26,7 +26,7 @@ Dashboard homepage (`/`) → "Run compliance analysis". Watch the live pipeline 
   because it's identical on every row. Encryption certs land on encryption requirements, access
   reports on access control."
 
-### 2:20 — The signature chain: freshness (60s)  ← the memorable moment
+### 2:20 — The signature chain: freshness (60s)
 Click **POL-ENC-001-R3 (Data in transit / TLS)**.
 - "This is a **Continuous** requirement — evidence must be ≤1 day old. The linked manual evidence is
   153 days old → **stale** → it can't make this COMPLIANT on its own."
@@ -49,5 +49,4 @@ we audited them, found them inconsistent with the evidence, and chose auditable 
 noise. That's the difference between a demo and an audit tool."
 
 ---
-**Backup if the live run hiccups:** `docs/ps3_sample_report.pdf` is a pre-generated report; the
-original Rakshak `/demo/golden` route still works as a fallback.
+**Backup if the live run hiccups:** `docs/ps3_sample_report.pdf` is a pre-generated report that can be shared directly with judges.

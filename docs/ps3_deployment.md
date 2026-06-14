@@ -1,9 +1,6 @@
-# Fresh deployment — CompAud (PS3)
+# Deployment Guide — CompAud (PS3)
 
-The old `*.modal.run` / `rakshak-ai-eight.vercel.app` URLs belong to the original
-Rakshak author. These steps stand up **your own** backend (Modal) and frontend (Vercel)
-from scratch. Backend code is already Modal-ready (`backend/modal_app.py`); frontend builds
-as-is.
+Steps to deploy the backend (Modal) and frontend (Vercel) from scratch. The backend is already Modal-ready (`backend/modal_app.py`); the frontend builds as-is with no extra configuration.
 
 ## 1. Backend → Modal
 
